@@ -5,7 +5,7 @@ import { github } from '../assets'
 import { SectionWrapper } from '../hoc'
 import { projects } from '../constants'
 import { textVariant,fadeIn } from '../utils/motion'
-import {Tilt} from 'react-tilt'
+import Tilt from 'react-parallax-tilt'
 
 const ProjectCard = ({index,name,description,tags,image,source_code_link}) => {
     return(
