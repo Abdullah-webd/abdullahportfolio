@@ -5,7 +5,6 @@ import CanvasLoader from '../Loader';
 import { Suspense } from 'react';
 
 const Ball = (props) => {
-  console.log("Ball Component imgUrl:", props.imgUrl); // Debugging log
 
   if (!props.imgUrl) {
     console.error("Error: imgUrl is missing in Ball component", props);
