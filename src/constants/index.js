@@ -57,7 +57,7 @@ import {
       icon: mobile,
     },
     {
-      title: "Backend Developer",
+      title: "Debugging",
       icon: backend,
     },
     {
@@ -119,58 +119,47 @@ import {
   
   const experiences = [
     {
-      title: "React.js Developer Intern",
-      company_name: "Tinzwave",
-      icon: tinzwave,
-      iconBg: "#fff",
-      date: "October 2024 - December 2024",
-      points: [
-        'Developed and maintained web applications using React.js and other related technologies',
-        'Collaborated with cross-functional teams, including designers, product managers, and developers, to create high-quality products',
-        'Implemented responsive designs and ensured cross-browser compatibility',
-        'Participated in code reviews and provided constructive feedback to other developers',
-      ],
+        title: "Frontend Developer Intern",
+        company_name: "Ab&Adams",
+        icon: './abadams.png',
+        iconBg: "#fff",
+        date: "March 2024 - May 2024",
+        points: [
+            "Assisted in building the company's website with modern UI components.",
+            "Collaborated with a team to enhance website responsiveness and performance.",
+            "Implemented interactive and responsive UI using HTML, CSS, and JavaScript.",
+            "Gained hands-on experience with frontend frameworks and best coding practices.",
+        ],
     },
     {
-      title: "React Native Developer",
-      company_name: "Tesla",
-      icon: tesla,
-      iconBg: "#E6DEDD",
-      date: "Jan 2021 - Feb 2022",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
+        title: "Frontend Developer Intern",
+        company_name: "Shopmaster",
+        icon: './Shopmaster.png',
+        iconBg: "#fff",
+        date: "May 2024 - July 2024",
+        points: [
+            "Assisted in the development and optimization of the Shopmaster website, ensuring a seamless user experience.",
+            "Implemented responsive web designs using HTML, CSS, and JavaScript, improving website accessibility across devices.",
+            "Collaborated with the development team to integrate new features and enhance site performance.",
+            "Debugged and fixed UI/UX issues to improve functionality and user engagement.",
+        ],
     },
     {
-      title: "Web Developer",
-      company_name: "Shopify",
-      icon: shopify,
-      iconBg: "#383E56",
-      date: "Jan 2022 - Jan 2023",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
+        title: "Frontend Developer",
+        company_name: "Tinzwave",
+        icon: tinzwave,
+        iconBg: "#E6DEDD",
+        date: "August 2024 - February 2025",
+        points: [
+            "Developing and maintaining responsive web applications using React.js and Next.js.",
+            "Working closely with designers and backend developers to create user-friendly interfaces.",
+            "Ensuring optimal website performance, cross-browser compatibility, and accessibility.",
+            "Integrating third-party APIs and implementing dynamic functionalities.",
+        ],
     },
-    {
-      title: "Full stack Developer",
-      company_name: "Meta",
-      icon: meta,
-      iconBg: "#E6DEDD",
-      date: "Jan 2023 - Present",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
-  ];
+    
+];
+
   
   const testimonials = [
     {

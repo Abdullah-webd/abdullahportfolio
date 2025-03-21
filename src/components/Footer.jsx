@@ -63,15 +63,13 @@ const Footer = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="flex space-x-5 !mt-6 md:!mt-0"
         >
-          <a href="https://github.com/yourgithub" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/Abdullah-webd" target="_blank" rel="noopener noreferrer">
             <img src={github} alt="GitHub" className="w-6 h-6 hover:scale-110 transition-transform" />
           </a>
-          {/* <a href="https://twitter.com/yourtwitter" target="_blank" rel="noopener noreferrer">
-            <img src="/twitter.svg" alt="Twitter" className="w-6 h-6 hover:scale-110 transition-transform" />
+          
+          <a href="https://www.linkedin.com/in/abdullah-ajala-4a373b328/" target="_blank" rel="noopener noreferrer">
+            <img src="/linkedin.png" alt="LinkedIn" className="w-6 h-6 hover:scale-110 transition-transform" />
           </a>
-          <a href="https://linkedin.com/in/yourlinkedin" target="_blank" rel="noopener noreferrer">
-            <img src="/linkedin.svg" alt="LinkedIn" className="w-6 h-6 hover:scale-110 transition-transform" />
-          </a> */}
         </motion.div>
       </div>
 
