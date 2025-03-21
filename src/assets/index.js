@@ -31,6 +31,11 @@ import carrent from "./carrent.png";
 import chatme from './chatme.png';
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+import bgremover from './bgremover.png'
+import nexusai from './nexusai.png'
+import nikeclone from './nikeclone.png'
+import streamtalk from './streamtalk.png'
+import virtualrealm from './virtualrealm.png'
 
 export {
   logo,
@@ -62,5 +67,10 @@ export {
   jobit,
   tripguide,
   chatme,
-  tinzwave
+  tinzwave,
+  bgremover,
+  nexusai,
+  nikeclone,
+  streamtalk,
+  virtualrealm
 };

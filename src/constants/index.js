@@ -24,7 +24,12 @@ import {
     tripguide,
     threejs,
     chatme,
-    tinzwave
+    tinzwave,
+    bgremover,
+    nexusai,
+    nikeclone,
+    streamtalk,
+    virtualrealm
   } from "../assets";
   
   export const navLinks = [
@@ -198,66 +203,83 @@ import {
     {
       name: "ChatMe",
       description:
-        "ChatMe is a fast and secure real-time chatting website that lets users connect instantly. With a sleek design and easy-to-use interface, ChatMe makes it easy to connect with friends, family, or colleagues anytime",
+        "ChatMe is a real-time chat application that enables users to communicate instantly. Built with React and Supabase, it offers a secure and seamless chatting experience.",
       tags: [
-        {
-          name: "react",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "Supabase",
-          color: "green-text-gradient",
-        },
-        {
-          name: "tailwind",
-          color: "pink-text-gradient",
-        },
+        { name: "react", color: "blue-text-gradient" },
+        { name: "Supabase", color: "green-text-gradient" },
+        { name: "tailwind", color: "pink-text-gradient" },
       ],
       image: chatme,
       source_code_link: "https://github.com/Abdullah-webd/ChatMe",
+      live_preview_link: "https://chatme-app.vercel.app/",
     },
     {
-      name: "Job IT",
+      name: "Nexus AI",
       description:
-        "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+        "Nexus AI is a chatbot that provides intelligent responses using the Gemini API. Built with React, it ensures a smooth and engaging user experience in real-time.",
       tags: [
-        {
-          name: "react",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "restapi",
-          color: "green-text-gradient",
-        },
-        {
-          name: "scss",
-          color: "pink-text-gradient",
-        },
+        { name: "react", color: "blue-text-gradient" },
+        { name: "Gemini API", color: "green-text-gradient" },
+        { name: "tailwind", color: "pink-text-gradient" },
       ],
-      image: jobit,
-      source_code_link: "https://github.com/",
+      image: nexusai,
+      source_code_link: "https://github.com/Abdullah-webd/nexus-ai",
+      live_preview_link: "https://nexus-ai.vercel.app/",
     },
     {
-      name: "Trip Guide",
+      name: "StreamTalk",
       description:
-        "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+        "StreamTalk is a video calling app that allows users to connect through high-quality video and audio. Built with React, CSS, and ZegoCloud API, it ensures a smooth and reliable communication experience.",
       tags: [
-        {
-          name: "nextjs",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "supabase",
-          color: "green-text-gradient",
-        },
-        {
-          name: "css",
-          color: "pink-text-gradient",
-        },
+        { name: "react", color: "blue-text-gradient" },
+        { name: "ZegoCloud API", color: "green-text-gradient" },
+        { name: "CSS", color: "pink-text-gradient" },
       ],
-      image: tripguide,
-      source_code_link: "https://github.com/",
+      image: streamtalk,
+      source_code_link: "https://github.com/Abdullah-webd/streamtalk",
+      live_preview_link: "https://streamtalk.vercel.app/",
+    },
+    {
+      name: "Virtual Realm",
+      description:
+        "Virtual Realm is a landing page showcasing immersive VR experiences. Built with Next.js and Three.js, it features stunning 3D visuals and modern UI interactions.",
+      tags: [
+        { name: "nextjs", color: "blue-text-gradient" },
+        { name: "Three.js", color: "green-text-gradient" },
+        { name: "tailwind", color: "pink-text-gradient" },
+      ],
+      image: virtualrealm,
+      source_code_link: "https://github.com/Abdullah-webd/virtual-realm",
+      live_preview_link: "https://virtual-realm.vercel.app/",
+    },
+    {
+      name: "Background Remover Pro",
+      description:
+        "Background Remover Pro removes image backgrounds instantly using AI. Built with React and TensorFlow.js, it delivers accurate results with an easy-to-use interface.",
+      tags: [
+        { name: "react", color: "blue-text-gradient" },
+        { name: "TensorFlow.js", color: "green-text-gradient" },
+        { name: "tailwind", color: "pink-text-gradient" },
+      ],
+      image: bgremover,
+      source_code_link: "https://github.com/Abdullah-webd/bgremoverpro",
+      live_preview_link: "https://bgremover.vercel.app/",
+    },
+    {
+      name: "Nike Landing Page",
+      description:
+        "Nike Landing Page is a visually appealing and modern landing page inspired by Nike. Built with HTML, CSS, and JavaScript, it features sleek animations and a responsive layout.",
+      tags: [
+        { name: "HTML", color: "blue-text-gradient" },
+        { name: "CSS", color: "green-text-gradient" },
+        { name: "JavaScript", color: "pink-text-gradient" },
+      ],
+      image: nikeclone,
+      source_code_link: "https://github.com/Abdullah-webd//Nike-official",
+      live_preview_link: "https://nike-clone.vercel.app/",
     },
   ];
+  
+  
   
   export { services, technologies, experiences, testimonials, projects };

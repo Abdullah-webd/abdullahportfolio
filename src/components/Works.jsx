@@ -6,8 +6,9 @@ import { SectionWrapper } from '../hoc'
 import { projects } from '../constants'
 import { textVariant,fadeIn } from '../utils/motion'
 import Tilt from 'react-parallax-tilt'
+import { FaEye } from "react-icons/fa";
 
-const ProjectCard = ({index,name,description,tags,image,source_code_link}) => {
+const ProjectCard = ({index,name,description,tags,image,source_code_link,live_preview_link}) => {
     return(
       <motion.div variants={fadeIn('up','spring',index*0.5,0.75)}>
           <Tilt
@@ -24,7 +25,13 @@ const ProjectCard = ({index,name,description,tags,image,source_code_link}) => {
                 alt={name}
                 className='!w-full !h-full !object-cover rounded-2xl'
               />
-              <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
+              <div className='absolute inset-0 flex justify-end m-3 card-img_hover gap-2'>
+                  <div
+                    onClick={()=>window.open(live_preview_link, '_blank')}
+                    className='bg-black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
+                  >
+                      <FaEye fontSize={25} />
+                  </div>
                   <div
                     onClick={()=>window.open(source_code_link, '_blank')}
                     className='bg-black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
