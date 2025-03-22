@@ -200,7 +200,7 @@ import {
       ],
       image: chatme,
       source_code_link: "https://github.com/Abdullah-webd/ChatMe",
-      live_preview_link: "https://chatme-app.vercel.app/",
+      live_preview_link: "https://chat-me-9dpd.vercel.app/",
     },
     {
       name: "Nexus AI",
@@ -213,7 +213,7 @@ import {
       ],
       image: nexusai,
       source_code_link: "https://github.com/Abdullah-webd/nexus-ai",
-      live_preview_link: "https://nexus-ai.vercel.app/",
+      live_preview_link: "https://nexus-ai-pi.vercel.app/",
     },
     {
       name: "StreamTalk",
@@ -239,7 +239,7 @@ import {
       ],
       image: virtualrealm,
       source_code_link: "https://github.com/Abdullah-webd/virtual-realm",
-      live_preview_link: "https://virtual-realm.vercel.app/",
+      live_preview_link: "https://virtual-realm-eight.vercel.app/",
     },
     {
       name: "Background Remover Pro",
@@ -252,7 +252,7 @@ import {
       ],
       image: bgremover,
       source_code_link: "https://github.com/Abdullah-webd/bgremoverpro",
-      live_preview_link: "https://bgremover.vercel.app/",
+      live_preview_link: "https://bgremoverpro.vercel.app/",
     },
     {
       name: "Nike Landing Page",
@@ -265,7 +265,7 @@ import {
       ],
       image: nikeclone,
       source_code_link: "https://github.com/Abdullah-webd//Nike-official",
-      live_preview_link: "https://nike-clone.vercel.app/",
+      live_preview_link: "https://nike-official.vercel.app/",
     },
   ];
   
