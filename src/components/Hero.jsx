@@ -1,23 +1,32 @@
+import { useState, useEffect, Suspense } from "react";
 import { motion } from "framer-motion";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { styles } from "../style";
 import { ComputersCanvas } from "./canvas";
+import CanvasLoader from "./Loader"; // Import Loader for fallback
 
 const Hero = () => {
+  const [showCanvas, setShowCanvas] = useState(false); // Delay loading ComputersCanvas on mobile
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setShowCanvas(true), 1000); // Delay canvas load for optimization
+    return () => clearTimeout(timeout);
+  }, []);
+
   // Typing Effect Hook
   const [text] = useTypewriter({
     words: [
       "I am a Frontend Developer.",
-     ' I specialize in HTML, CSS, JavaScript, React, Typescript, Next.js, and Tailwind CSS',
+      "I specialize in HTML, CSS, JavaScript, React, Typescript, Next.js, and Tailwind CSS",
     ],
-    loop: true, // Infinite loop
-    typeSpeed: 50, // Speed of typing
-    deleteSpeed: 10, // Speed of deleting
-    delaySpeed: 1500, // Delay before deleting
+    loop: true,
+    typeSpeed: 50,
+    deleteSpeed: 10,
+    delaySpeed: 1500,
   });
 
   return (
-    <section className={`relative w-full h-screen mx-auto`}>
+    <section className="relative w-full h-screen mx-auto">
       <div
         className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
@@ -39,20 +48,19 @@ const Hero = () => {
         </div>
       </div>
 
-      <ComputersCanvas />
+      {/* Lazy load ComputersCanvas with a fallback */}
+      {showCanvas ? (
+        <Suspense fallback={<CanvasLoader />}>
+          <ComputersCanvas />
+        </Suspense>
+      ) : null}
 
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
         <a href="#about">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
             <motion.div
-              animate={{
-                y: [0, 24, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: "loop",
-              }}
+              animate={{ y: [0, 24, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop" }}
               className="w-3 h-3 rounded-full bg-secondary mb-1"
             />
           </div>
