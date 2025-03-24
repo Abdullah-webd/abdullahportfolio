@@ -1,4 +1,4 @@
-import { useState, useRef, Suspense } from "react";
+import { useRef, Suspense, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 import * as random from "maath/random/dist/maath-random.esm";
@@ -6,34 +6,31 @@ import * as random from "maath/random/dist/maath-random.esm";
 const Stars = (props) => {
   const ref = useRef();
 
-  // Generate positions and validate them
-  const [sphere] = useState(() => {
-    let positions = random.inSphere(new Float32Array(3000), { radius: 5.5 }); // Increased radius for better visibility
+  // Detect mobile device
+  const isMobile = window.innerWidth < 768;
+  const starCount = isMobile ? 1500 : 3000;
+  const starSize = isMobile ? 0.008 : 0.02; // Smaller stars on mobile
 
-    // Ensure no NaN values
-    for (let i = 0; i < positions.length; i++) {
-      if (isNaN(positions[i]) || !isFinite(positions[i])) {
-        positions[i] = 0;
-      }
-    }
+  // Generate star positions (memoized for performance)
+  const sphere = useMemo(() => {
+    return random.inSphere(new Float32Array(starCount * 3), { radius: 5 });
+  }, [starCount]);
 
-    return positions;
-  });
-
-  useFrame((state, delta) => {
+  // Apply rotation animation
+  useFrame((_, delta) => {
     if (ref.current) {
-      ref.current.rotation.x -= delta / 10;
-      ref.current.rotation.y -= delta / 15;
+      ref.current.rotation.x -= delta * 0.05; // Adjusted rotation speed
+      ref.current.rotation.y -= delta * 0.08;
     }
   });
 
   return (
-    <group rotation={[0, 0, Math.PI / 4]}>
-      <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
+    <group ref={ref} rotation={[0, 0, Math.PI / 4]}>
+      <Points positions={sphere} stride={3} frustumCulled {...props}>
         <PointMaterial
           transparent
-          color="#ffffff" // Changed to white for better contrast
-          size={0.02} // Increased size to make stars more visible
+          color="#ffffff"
+          size={starSize} // Dynamically adjust size
           sizeAttenuation
           depthWrite={false}
         />
@@ -45,7 +42,11 @@ const Stars = (props) => {
 const StarsCanvas = () => {
   return (
     <div className="w-full h-auto absolute inset-0 z-[-1]">
-      <Canvas camera={{ position: [0, 0, 3] }}> {/* Adjusted camera for better visibility */}
+      <Canvas
+        camera={{ position: [0, 0, 4] }} // Slightly adjusted camera position
+        dpr={[1, 1.5]} // Lower DPR for better performance
+        frameloop="always" // Keeps animation smooth
+      >
         <Suspense fallback={null}>
           <Stars />
         </Suspense>
