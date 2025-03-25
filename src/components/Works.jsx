@@ -61,7 +61,7 @@ const ProjectContent = ({
   live_preview_link,
 }) => (
   <>
-    <div className="relative w-full h-[fit-content]">
+    <div className="relative w-full sm:h-[fit-content] h-[fit-content]">
       <img
         src={image}
         alt={name}
@@ -114,7 +114,7 @@ const Works = () => {
 
       <div className="w-full flex">
         <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
+          variants={fadeIn("", "", 0.1, 0)}
           className="mt-3 text-secondary max-w-3xl leading-[30px] text-[17px]"
         >
           Below are some of the projects I have worked on, each reflecting my
