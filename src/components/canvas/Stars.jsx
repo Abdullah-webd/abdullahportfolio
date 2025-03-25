@@ -1,4 +1,4 @@
-import { useRef, Suspense, useMemo } from "react";
+import { useRef, Suspense, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 import * as random from "maath/random/dist/maath-random.esm";
@@ -6,10 +6,17 @@ import * as random from "maath/random/dist/maath-random.esm";
 const Stars = (props) => {
   const ref = useRef();
 
-  // Detect mobile device
-  const isMobile = window.innerWidth < 768;
+  // Handle responsive star count
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const starCount = isMobile ? 1500 : 3000;
-  const starSize = isMobile ? 0.008 : 0.02; // Smaller stars on mobile
+  const starSize = isMobile ? 0.008 : 0.02;
 
   // Generate star positions (memoized for performance)
   const sphere = useMemo(() => {
@@ -19,7 +26,7 @@ const Stars = (props) => {
   // Apply rotation animation
   useFrame((_, delta) => {
     if (ref.current) {
-      ref.current.rotation.x -= delta * 0.05; // Adjusted rotation speed
+      ref.current.rotation.x -= delta * 0.05;
       ref.current.rotation.y -= delta * 0.08;
     }
   });
@@ -30,7 +37,7 @@ const Stars = (props) => {
         <PointMaterial
           transparent
           color="#ffffff"
-          size={starSize} // Dynamically adjust size
+          size={starSize}
           sizeAttenuation
           depthWrite={false}
         />
@@ -42,11 +49,7 @@ const Stars = (props) => {
 const StarsCanvas = () => {
   return (
     <div className="w-full h-auto absolute inset-0 z-[-1]">
-      <Canvas
-        camera={{ position: [0, 0, 4] }} // Slightly adjusted camera position
-        dpr={[1, 1.5]} // Lower DPR for better performance
-        frameloop="always" // Keeps animation smooth
-      >
+      <Canvas camera={{ position: [0, 0, 4] }} dpr={[1, 1.5]} frameloop="always">
         <Suspense fallback={null}>
           <Stars />
         </Suspense>

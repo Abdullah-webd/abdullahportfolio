@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { styles } from "../style";
 import { github } from "../assets";
@@ -17,37 +17,27 @@ const ProjectCard = ({
   source_code_link,
   live_preview_link,
 }) => {
-  // Check if running on mobile
-  const isMobile = window.innerWidth < 768;
+  // ✅ Use state to track window width for mobile responsiveness
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
-      {!isMobile ? (
-        <Tilt
-          options={{ max: 45, scale: 1, speed: 450 }}
-          className="bg-tertiary !p-5 rounded-2xl w-full max-w-[320px] sm:max-w-[360px]"
-        >
-          <ProjectContent
-            name={name}
-            description={description}
-            tags={tags}
-            image={image}
-            source_code_link={source_code_link}
-            live_preview_link={live_preview_link}
-          />
-        </Tilt>
-      ) : (
-        <div className="bg-tertiary !p-5 rounded-2xl w-full max-w-[320px] sm:max-w-[360px]">
-          <ProjectContent
-            name={name}
-            description={description}
-            tags={tags}
-            image={image}
-            source_code_link={source_code_link}
-            live_preview_link={live_preview_link}
-          />
-        </div>
-      )}
+      <div className="bg-tertiary !p-5 rounded-2xl w-full max-w-[320px] sm:max-w-[360px]">
+        <ProjectContent
+          name={name}
+          description={description}
+          tags={tags}
+          image={image}
+          source_code_link={source_code_link}
+          live_preview_link={live_preview_link}
+        />
+      </div>
     </motion.div>
   );
 };
@@ -68,7 +58,7 @@ const ProjectContent = ({
         className="w-full h-full object-cover rounded-2xl"
         onError={(e) => {
           e.target.onerror = null;
-          e.target.src = "/fallback-image.png"; // Use a fallback image if load fails
+          e.target.src = "/fallback-image.png"; // ✅ Use fallback image if missing
         }}
       />
       <div className="absolute inset-0 flex justify-end m-3 card-img_hover gap-2">
@@ -82,11 +72,7 @@ const ProjectContent = ({
           onClick={() => window.open(source_code_link, "_blank")}
           className="bg-black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
         >
-          <img
-            src={github}
-            alt="github"
-            className="w-1/2 h-1/2 object-contain"
-          />
+          <img src={github} alt="github" className="w-1/2 h-1/2 object-contain" />
         </div>
       </div>
     </div>
@@ -105,6 +91,9 @@ const ProjectContent = ({
 );
 
 const Works = () => {
+  // ✅ Debug: Check if projects data is available
+  console.log("Projects Data:", projects);
+
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -114,7 +103,7 @@ const Works = () => {
 
       <div className="w-full flex">
         <motion.p
-          variants={fadeIn("", "", 0.1, 0)}
+          variants={fadeIn("", "", 0.1, 1)}
           className="mt-3 text-secondary max-w-3xl leading-[30px] text-[17px]"
         >
           Below are some of the projects I have worked on, each reflecting my
@@ -128,7 +117,7 @@ const Works = () => {
         </motion.p>
       </div>
 
-      {/* Show a message if projects are empty */}
+      {/* ✅ Show a message if projects array is empty */}
       {projects.length === 0 ? (
         <p className="text-white text-center mt-10">No projects found.</p>
       ) : (
