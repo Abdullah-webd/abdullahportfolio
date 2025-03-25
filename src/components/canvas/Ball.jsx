@@ -1,56 +1,34 @@
-import React from 'react';
-import { Canvas } from '@react-three/fiber';
-import { Decal, Float, OrbitControls, Preload, useTexture } from '@react-three/drei';
-import CanvasLoader from '../Loader';
-import { Suspense } from 'react';
+import { Canvas, extend } from "@react-three/fiber";
+import React, { Suspense } from "react";
+import { Decal, Float, OrbitControls, Preload, useTexture } from "@react-three/drei";
+import CanvasLoader from "../Loader";
+
+// Register Canvas in React-Three-Fiber
+extend({ Canvas });
 
 const Ball = (props) => {
-
-  if (!props.imgUrl) {
-    console.error("Error: imgUrl is missing in Ball component", props);
-    return null;
-  }
-
-  const [decal] = useTexture([props.imgUrl || "/fallback-texture.png"]);
+  const imgUrl = props.imgUrl || "/fallback-texture.png"; // Provide a fallback texture
+  const [decal] = useTexture([imgUrl]);
 
   return (
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
       <ambientLight intensity={0.25} />
       <directionalLight position={[0, 0, 0.05]} />
       <mesh castShadow receiveShadow scale={2.75}>
-        {/* Replace icosahedronGeometry with boxGeometry to test */}
         <icosahedronGeometry args={[1, 1]} />
-        
-        {/* Check if position attribute contains NaN before rendering */}
-        {decal && (
-          <meshStandardMaterial
-            color="#fff8eb"
-            polygonOffset
-            polygonOffsetFactor={-5}
-            flatShading
-          />
-        )}
-
-        {decal && (
-          <Decal
-            map={decal}
-            flatShading
-            position={[0, 0, 1]}
-            rotation={[0, 0, 0]} // Fixed rotation
-          />
-        )}
+        <meshStandardMaterial color="#fff8eb" polygonOffset polygonOffsetFactor={-5} flatShading />
+        {decal && <Decal map={decal} flatShading position={[0, 0, 1]} rotation={[0, 0, 0]} />}
       </mesh>
     </Float>
   );
 };
 
 const BallCanvas = ({ icon }) => {
-
   return (
     <Canvas frameloop="demand" gl={{ preserveDrawingBuffer: true }}>
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls enableZoom={false} />
-        {icon ? <Ball imgUrl={icon} /> : console.error("Error: Icon is missing in BallCanvas")}
+        <Ball imgUrl={icon || "/fallback-texture.png"} />
       </Suspense>
       <Preload all />
     </Canvas>
